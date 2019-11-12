@@ -1,0 +1,19 @@
+#wrapper{
+    height: 10%;
+    background-color: lightgrey
+}
+
+#mybutton {
+    float: left;
+    color: darkorchid;
+    font-weight: bold;
+    border: none;
+    background-color: lightgrey;
+}
+#right {
+   float: right;
+   font-weight: bold;
+}
+#body {
+    text-align: center;
+}
