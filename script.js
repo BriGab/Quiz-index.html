@@ -4,7 +4,8 @@ var body = document.getElementById("body");
 //create a button that initiates the quiz
 
 var timeleft = 75;
-startButton.addEventListener("click", function(){
+startButton.addEventListener("click", function(event){
+  event.preventDefault();
   var downloadTimer = setInterval(function(){
     body.textContent = "";
     document.getElementById("counter").innerHTML = timeleft;
@@ -13,21 +14,28 @@ startButton.addEventListener("click", function(){
       clearInterval(downloadTimer);
       document.getElementById("countdown").innerHTML = "Finished"
     }
+    for (var i = 0; i < questions.length; i++) {
+
+      var title = questions[i].title;
+      var choices = questions[i].choices;
+      var answer = questions[i].answer;
+      
+      var tr = document.createElement("tr");
+      var td = document.createElement("td");
+    
+      td.innerHTML = title[0];
+      td.innerHTML = choices[0];
+      tr.appendChild(td);
+      body.appendChild(tr);
+
+    
+      
+    
+    }
   }, 1000);
+});
 //show user the first question
-for (var i = 0; i < questions.length; i++) {
 
-  var title = questions[i].title;
-  var choices = questions[i].choices;
-  var answer = questions[i].answer;
-  
-  var tr = document.createElement("tr");
-  var td = document.createElement("td");
-
-  td.innerHTML = title;
-
-
-}
 
 // var tr = document.createElement("tr");
 //         // create a table data cell (td) and inside build out an a tag w/ the link and name of link
@@ -43,7 +51,6 @@ for (var i = 0; i < questions.length; i++) {
 
 
 
-});
 
 
 
