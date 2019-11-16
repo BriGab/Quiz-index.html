@@ -1,55 +1,70 @@
 var startButton = document.querySelector("#startButton");
+var question = document.getElementById("question");
+var description = document.getElementById("description");
 var body = document.getElementById("body");
 //create a countdown for the quiz
 //create a button that initiates the quiz
 
 var timeleft = 75;
-startButton.addEventListener("click", function(event){
-  event.preventDefault();
-  var downloadTimer = setInterval(function(){
+
+
+
+
+function getQuestion () {
+  currentIndex++;
+  var title = questions[currentIndex].title;
+  var choices = questions[currentIndex].choices;
+  var answer = questions[currentIndex].answer;
+
+  var header = document.createElement("h1");
+
+  header.innerHTML = title;
+  body.appendChild(header);
+  console.log (title);
+
+
+for (var i = 0; i < choices.length; i++) {
+
+  
+  
+  var tr = document.createElement("tr");
+  var td = document.createElement("td");
+
+  td.innerHTML = choices[i];
+  tr.appendChild(td);
+  body.appendChild(tr);
+
+  console.log(title);
+  console.log(choices);
+  console.log(answer);
+  
+}
+}
+function timer(){
+  // event.preventDefault();
+ 
+  setInterval(function(){
+    console.log("timer")
     body.textContent = "";
     document.getElementById("counter").innerHTML = timeleft;
     timeleft -= 1;
-    if(timeleft <= 0){
-      clearInterval(downloadTimer);
-      document.getElementById("countdown").innerHTML = "Finished"
+    if(timeleft === 0){
+      clearInterval(timer);
+      document.getElementById("countdown");
     }
-    for (var i = 0; i < questions.length; i++) {
+  },1000);
+}
+startButton.addEventListener("click", function(){
+  timer();
+  getQuestion();
 
-      var title = questions[i].title;
-      var choices = questions[i].choices;
-      var answer = questions[i].answer;
-      
-      var tr = document.createElement("tr");
-      var td = document.createElement("td");
-    
-      td.innerHTML = title[0];
-      td.innerHTML = choices[0];
-      tr.appendChild(td);
-      body.appendChild(tr);
 
-    
-      
-    
-    }
-  }, 1000);
 });
+
+
+var currentIndex = 0;
+
 //show user the first question
-
-
-// var tr = document.createElement("tr");
-//         // create a table data cell (td) and inside build out an a tag w/ the link and name of link
-//         var td = document.createElement("td");
-//         // <a href ='linkehere' target='_blank'>nameHere</a>
-//         td.innerHTML = "<a href='" + url + "' target='_blank'>" + name + "</a>";
-//         // td.innerHTML = `<a href=${url} target="_blank">${name}</a>`; //does the same thing as teh line above
-//         // append the td's into the tr 
-//         tr.appendChild(td);
-//         // Since tr is living only in javascript we have to append our tr to the table
-//         bookmarksTable.appendChild(tr);
-//         // If we add the delete button, wire up the delete click event
-
-
 
 
 

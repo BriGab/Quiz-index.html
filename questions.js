@@ -1,28 +1,28 @@
 var questions = [
     {
       title: "How would you select this specific element <h1 class=\"header\"> using DOM?",
-      choices: ["document.getElementbyId()", "document.getElementsbyClassName()", "$(<h1>)", "document.querySelector(#header)"],
-      answer: "document.getElementsbyClassName()"
+      choices: ["1. document.getElementbyId()", "2. document.getElementsbyClassName()", "3. $(<h1>)", "4. document.querySelector(#header)"],
+      answer: "Answer: document.getElementsbyClassName()"
     },
     {
       title: "A function can be intiated by calling the name of the function followed by ____",
-      choices: ["parantheses & semi-colon", "curly brackets & semi-colon", "parantheses", "semi-colon"],
-      answer: "parentheses & semi-colon"
+      choices: ["1. parantheses & semi-colon", "2. curly brackets & semi-colon", "3. parantheses", "4. semi-colon"],
+      answer: "Answer: parentheses & semi-colon"
     },
     {
       title: "Where do you insert your script tag with Javascript inside your HTML page?",
-      choices: ["In the <head> element", "right below the beginning <body> tag", "Right above the ending </body> tag", "In a <div> tag"],
-      answer: "Right above the ending </body> tag"
+      choices: ["1. In the <head> element", "2. right below the beginning <body> tag", "3. Right above the ending </body> tag", "4. In a <div> tag"],
+      answer: "Answer: Right above the ending </body> tag"
     },
     {
       title: "How do you set a variable in Javascript?",
-      choices: ["Write the name and set it equal to whatever you'd like", "write var ____ and then the variable name", "write function equals whatever you'd like", "variable cannot be created"],
-      answer: "write var ____ and then the variable name"
+      choices: ["1. Write the name and set it equal to whatever you'd like", "2. write var ____ and then the variable name", "3. write function equals whatever you'd like", "4. variable cannot be created"],
+      answer: "Answer: write var ____ and then the variable name"
     },
     {
       title: "How would you alert Hello World, to a user?" ,
-      choices: ["function(Hello World)", "if (Hello World)", "alert = Hello World", "alert(\"Hello World\")"],
-      answer: "alert(\"Hello World\")"
+      choices: ["1. function(Hello World)", "2. if (Hello World)", "3. alert = Hello World", "4. alert(\"Hello World\")"],
+      answer: "Answer: alert(\"Hello World\")"
     }
   ];
   
