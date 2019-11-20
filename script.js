@@ -2,7 +2,7 @@ var startButton = document.querySelector("#startButton");
 var question = document.getElementById("question");
 var description = document.getElementById("description");
 var body = document.getElementById("body");
-var header = document.getElementById("#heading");
+var header = document.getElementById("heading");
 // var confirm = document.getElementsByClassName("rightWrong");
 var timeleft = 75;
 var currentIndex = 0;
@@ -34,8 +34,9 @@ function timer() {
 function getQuestion() {
 
   var title = questions[currentIndex].title;
+  console.log(currentIndex);
   document.getElementById("heading").innerText = title;
-
+  
   question.innerHTML = "";
   var choices = questions[currentIndex].choices;
   for (var i = 0; i < choices.length; i++) {
@@ -69,10 +70,31 @@ function clickAnswer() {
   if (currentIndex < questions.length) {
     getQuestion();
   } else {
-    clearInterval(timerId);
-    console.log("GAME OVER!")
+    getScore();
+    question.remove();
+    header.remove();
   }
 };
+
+function getScore(){
+  header.remove();
+  // var createform = document.createElement("form");
+  var createInput = document.createElement("input");
+  // createform.setAttribute("action", "");
+  // createform.setAttribute("method", "post");
+  createInput.appendChild(question);
+  // createform.classList.add("form-control");
+  // createform.classList.add("form-control-sm");
+  // createform.classList.add("formStyle");
+
+  document.getElementById("rightWrong").innerHTML(createInput);
+  
+  // header.innerHTML = "Done!"
+  // createform.appendChild(question);
+  // console.log("form");
+
+}
+
 
 
 
