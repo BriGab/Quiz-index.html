@@ -7,6 +7,7 @@ var div = document.getElementById("rightWrong");
 var score = document.getElementById("score") 
 var saveScore= document.getElementById("saveScore");
 var input = document.getElementById("input")
+var final = timeleft--;
 var getUserInfo = { 
   HTML: {
       name: [],
@@ -19,6 +20,8 @@ var getUserInfo = {
 var allScores = JSON.parse(localStorage.getItem("allScores"))
 console.log("allScores", getUserInfo)
 // var cities = JSON.parse(localStorage.getItem("cities")) || [];
+
+
 
 var timeleft = 75;
 var currentIndex = 0;
@@ -37,8 +40,8 @@ startButton.addEventListener("click", function () {
 function timer() {
   timerId = setInterval(function () {
     document.getElementById("counter").innerHTML = timeleft;
-    var final = timeleft--;
-    score.textContent= final;
+    final = timeleft--;
+    // score.innerHTML= final;
     if (timeleft === -1) {
       clearInterval(timerId)
     }
@@ -92,40 +95,40 @@ function clickAnswer() {
     header.innerHTML = "";
     div.innerHTML = "";
     question.innerHTML = "";
-    document.getElementById("hideMe").style.display= "inline";
-   
-    
+    // document.getElementById("hideMe").style.display= "inline"
+    localStorage.setItem("score", final)
+    console.log(final)
+    window.location.replace("highscore.html");
   }
 };
-saveScore.addEventListener("click", function(){
 
-var name = input.value
-var num = score.innerHTML
+// saveScore.addEventListener("click", function(){
 
-var newGetScore =  {
-  name: name,
-  num: num
-}
-var nameLine = document.getElementById("line")
-nameLine.textContent = name + " " + " " + num
-
-
-localStorage.setItem("allScores", JSON.stringify(newGetScore));
-// collect bookmark url and store in variable
-
-// localStorage.setItem(initials, scores);
-// let user = {initials: [input.value], score: [score.value]};
-// localStorage.setItem('jsonValue',JSON.stringify(user));
-
-// //Retrieve the values from localstorage
-// let temp = localStorage.getItem('someValue'); //temp is hello
-// let tempJSONString = localStorage.getItem('jsonValue'); 
-// let tempJSON = JSON.parse(tempJSONString );
-// console.log(temp)
-// console.log(tempJSON)
-// console.log(JSON.parse(localStorage.getItem(1)))
-
-// saveBox.innerText = JSON.parse(localStorage.getItem(initials))
-// input.append(saveBox)
-
-})
+//   var name = input.value
+//   var num = score.innerHTML
+  
+//   var newGetScore =  {
+//     name: name,
+//     num: num
+//   }
+//   console.log(newGetScore)
+//   for (var i = 0; i < newGetScore; i++) {
+//     var tr = document.createElement("tr");
+  
+//     var td = document.createElement("td");
+    
+//     td.textContent = name + " " + " " + num
+         
+//     tr.appendChild(td);
+    
+//     document.getElementById("table").appendChild(tr);
+//   }
+//   var nameLine = document.getElementById("line")
+//   nameLine.textContent = name + " " + " " + num
+  
+  
+  
+  
+//   localStorage.setItem("allScores", JSON.stringify(newGetScore));
+  
+//   })
