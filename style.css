@@ -28,6 +28,23 @@
 
 
 }
-.formStyle {
-
+.hideMe {
+    display:block;
+}
+/* Highscore page */
+.myCard {
+    margin: 0 auto;
+    height: 40%;
+    width: 50%;
+}
+.mycardBody {
+    text-align: center;
+}
+.storedScores {
+   display: block;
+   margin: 0 auto;
+}
+.scoreButtons {
+    margin-top: 20px;
+    display: inline-block;
 }

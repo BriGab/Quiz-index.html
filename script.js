@@ -3,7 +3,23 @@ var question = document.getElementById("question");
 var description = document.getElementById("description");
 var body = document.getElementById("body");
 var header = document.getElementById("heading");
-// var confirm = document.getElementsByClassName("rightWrong");
+var div = document.getElementById("rightWrong");
+var score = document.getElementById("score") 
+var saveScore= document.getElementById("saveScore");
+var input = document.getElementById("input")
+var getUserInfo = { 
+  HTML: {
+      name: [],
+      num: []
+  },
+}
+
+
+
+var allScores = JSON.parse(localStorage.getItem("allScores"))
+console.log("allScores", getUserInfo)
+// var cities = JSON.parse(localStorage.getItem("cities")) || [];
+
 var timeleft = 75;
 var currentIndex = 0;
 var timerId;
@@ -21,10 +37,10 @@ startButton.addEventListener("click", function () {
 function timer() {
   timerId = setInterval(function () {
     document.getElementById("counter").innerHTML = timeleft;
-    timeleft--;
-    if (timeleft <= 0) {
-      clearInterval(timerId);
-      document.getElementById("counter").innerHTML = "Finished";
+    var final = timeleft--;
+    score.textContent= final;
+    if (timeleft === -1) {
+      clearInterval(timerId)
     }
   }, 1000);
 }
@@ -60,64 +76,56 @@ function getQuestion() {
 function clickAnswer() {
   //  this === btn
   if (this.value === questions[currentIndex].answer) {
-    document.getElementById("rightWrong").textContent = "Correct";
+    div.textContent = "Correct";
     correct++;
   } else {
-    document.getElementById("rightWrong").textContent = "Incorrect";
+    div.textContent = "Incorrect";
     incorrect++;
+    timeleft -=10;
   }
+  console.log(timeleft)
   currentIndex++;
   if (currentIndex < questions.length) {
     getQuestion();
-  } else {
-    getScore();
-    question.remove();
-    header.remove();
+  } else { 
+    clearInterval(timerId);
+    header.innerHTML = "";
+    div.innerHTML = "";
+    question.innerHTML = "";
+    document.getElementById("hideMe").style.display= "inline";
+   
+    
   }
 };
+saveScore.addEventListener("click", function(){
 
-function getScore(){
-  header.remove();
-  // var createform = document.createElement("form");
-  var createInput = document.createElement("input");
-  // createform.setAttribute("action", "");
-  // createform.setAttribute("method", "post");
-  createInput.appendChild(question);
-  // createform.classList.add("form-control");
-  // createform.classList.add("form-control-sm");
-  // createform.classList.add("formStyle");
+var name = input.value
+var num = score.innerHTML
 
-  document.getElementById("rightWrong").innerHTML(createInput);
-  
-  // header.innerHTML = "Done!"
-  // createform.appendChild(question);
-  // console.log("form");
-
+var newGetScore =  {
+  name: name,
+  num: num
 }
+var nameLine = document.getElementById("line")
+nameLine.textContent = name + " " + " " + num
 
 
+localStorage.setItem("allScores", JSON.stringify(newGetScore));
+// collect bookmark url and store in variable
 
+// localStorage.setItem(initials, scores);
+// let user = {initials: [input.value], score: [score.value]};
+// localStorage.setItem('jsonValue',JSON.stringify(user));
 
+// //Retrieve the values from localstorage
+// let temp = localStorage.getItem('someValue'); //temp is hello
+// let tempJSONString = localStorage.getItem('jsonValue'); 
+// let tempJSON = JSON.parse(tempJSONString );
+// console.log(temp)
+// console.log(tempJSON)
+// console.log(JSON.parse(localStorage.getItem(1)))
 
-//Once user selects answer show whether they are correct or incorrect 
-//Keep track of this score 
-//Move on to the next question
-//repeat until all questions have been asked and answered 
-//Show user's final score and have them enter initials to save highscore
-//when inititals are submitted change to the high score screen and have an options to clear
+// saveBox.innerText = JSON.parse(localStorage.getItem(initials))
+// input.append(saveBox)
 
-
-
-// var timeleft = 75;
-// function timer(){
-//   setInterval(function(){
-//     console.log("timer")
-//     body.textContent = "";
-//     document.getElementById("counter").innerHTML = timeleft;
-//     timeleft -= 1;
-//     if(timeleft === 0){
-//       clearInterval(timer);
-//       document.getElementById("countdown");
-//     }
-//   }, 1000);
-// }
+})

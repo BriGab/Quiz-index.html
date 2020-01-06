@@ -1,6 +1,6 @@
 var questions = [
     {
-      title: "How would you select this specific element <h1 class=\"header\"> using DOM?",
+      title: "How would you select this element <h1 class=\"header\"> using DOM?",
       choices: ["A. document.getElementbyId()","B. document.getElementsbyClassName()", "C. $(<h1>)", "E. document.querySelector(#header)"],
       answer: "B. document.getElementsbyClassName()"
     },
