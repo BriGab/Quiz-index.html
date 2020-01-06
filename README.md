@@ -10,3 +10,5 @@ When the user clicks "start quiz" the timer starts counting down. When the user 
 
 This is a work in progress and does not have complete functionality yet. 
 
+Updated 1/6: This page now has a link to highscore page and stores the user's score in local storage. It also displays the user's intials and score when clicking save. However this is still a work in progress as I was not able to get the scores to persist. 
+
